@@ -40,7 +40,7 @@ public class ServletController {
 		return "get_json_success";
 	}
 
-	@RequestMapping("/post_json_from_url")
+	@RequestMapping("/usr/post_json_from_url")
 	public String postJsonFromUrl(Map<String, Object> model, HttpSession session)
 			throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		String validJsonStr = correctJsonStr(getStringFromInputStream(new URL(url).openStream()));
@@ -89,7 +89,7 @@ public class ServletController {
 		return "post_json_success";
 	}
 
-	@RequestMapping("/list_addresses")
+	@RequestMapping("/usr/list_addresses")
 	public String listAddresses(Map<String, Object> model, HttpSession session) {
 		model.put("addressBlocks", session.getAttribute("addressBlocks"));
 
