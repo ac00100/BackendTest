@@ -1,0 +1,3 @@
+spring.session.store-type=none
+spring.mvc.view.prefix: /
+spring.mvc.view.suffix: .jsp

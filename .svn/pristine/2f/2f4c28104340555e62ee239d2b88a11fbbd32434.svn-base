@@ -1,0 +1,32 @@
+package com.backend.test.controller;
+
+import java.util.Collection;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.backend.test.dto.AddressBlock;
+
+@RestController
+public class AddressRestController {
+
+	@RequestMapping(path = "/address_blocks", method = RequestMethod.POST)
+	public ResponseEntity<Collection<AddressBlock>> createAddressBlocks(
+			@RequestBody Collection<AddressBlock> addressBlocks, HttpSession session) {
+		for (AddressBlock addressBlock : addressBlocks) {
+			// test
+			System.out.println(addressBlock.getAddress().getStreet() + " " + addressBlock.getType() + " "
+					+ addressBlock.getAddress().getGeoLocation().getLng());
+		}
+
+		// session storage for addressBlocks
+		session.setAttribute("addressBlocks", addressBlocks);
+		return new ResponseEntity<Collection<AddressBlock>>(addressBlocks, HttpStatus.OK);
+	}
+}
